@@ -1,0 +1,15 @@
+function [ outdata, coeffs ] = scaleZScore( data, coeffs )
+    outdata = data;
+
+    if nargin == 1
+        coeffs = [mean(data.x) std(data.x)] 
+    end
+
+    for i = 1:length(coeffs)
+        
+        %Scale between [0,1]
+        scaledData = (outdata.x(:, i) - coeffs(1,i)) / intervalOld(i);
+        
+    end
+end
+
