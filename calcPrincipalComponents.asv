@@ -1,0 +1,23 @@
+function [ outData, coeffs ] = calcPrincipalComponents( data, dimReduct )
+
+    % From the Pattern Recognition Scriptum
+    
+    % Subtract the mean in each coordinate
+    % here we use the outer product to do this in an elegant way
+    dataCentered = data - ones(size(data, 1), 1) * mean(data, 1);
+
+    % Calculate the covariance matrix
+    Sigma = cov(dataCentered);
+    
+    % Compute eigenvalues and eigenvectors
+    [EVe, EVa] = eig(Sigma);
+    
+    % We take out the eigenvalues from the diagonal matrix and sort them
+    % idx contains the sorting index which we need to sort
+    % the eigenvectors in the same order
+    [EVa, idx] = sort(diag(EVa),'descend');
+    
+    % Lets resort the eigenvectors
+    EVe = EVe(:,idx);
+end
+
