@@ -64,12 +64,12 @@ function [ traindata, testdata ] = randomSampling( data, percent, type )
         sizeTrainData = size(traindata.x, 1);
         trainRand = randperm(sizeTrainData);
         traindata.x = traindata.x(trainRand, :);
-        traindata.labels = traindata.labels(trainRand, :);
+        traindata.targets = traindata.targets(trainRand, :);
         
         sizeTestData = size(testdata.x, 1);
-        testRand = randperm(sizeTestData.x, 1);
+        testRand = randperm(sizeTestData);
         testdata.x = testdata.x(testRand, :);
-        testdata.labels = testdata.labels(testRand, :);
+        testdata.targets = testdata.targets(testRand, :);
         
     end
     
