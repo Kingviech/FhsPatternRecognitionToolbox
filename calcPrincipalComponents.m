@@ -22,6 +22,9 @@ function [ outData, EVe ] = calcPrincipalComponents( data, dimReduct, coeffs )
         % Lets resort the eigenvectors
         EVe = EVe(:,idx);
         coeffs = EVe;
+        
+    else
+        EVe = coeffs;
     end
     % Now transform the data to the new coordinates by multiplying
     % (this works since the eigenvectors form an orthonormal basis so
@@ -29,6 +32,6 @@ function [ outData, EVe ] = calcPrincipalComponents( data, dimReduct, coeffs )
     transformedData = (coeffs'*dataCentered')';
     outData.x = transformedData(:,1:dimReduct);
     outData.targets = data.targets;
-    outData.labels = data.labels;
+    outData.labels = data.labels(:,1:dimReduct);
 end
 
