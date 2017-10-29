@@ -13,6 +13,7 @@ switch mode
             
             curDataX = data.x(curIndices, :);
             
+            % Save class in the first column of the classifier
             result(i, 1) = uniqueClasses(i);
             result(i, 2:end) = mean(curDataX);
         end
