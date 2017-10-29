@@ -1,7 +1,7 @@
 function myperfmeasures( data )
 %MYPERFMEASURES Summary of this function goes here
 %   Detailed explanation goes here
-    [ConfMat, order] = confusionmat(data.targets',data.classes');
+    [ConfMat, order] = confusionmat(data.targets',data.prediction');
 
     ConfMatTran = ConfMat';
     TP = ConfMatTran(1, 1);

@@ -18,7 +18,7 @@ function plotData(dat, varargin)
     
     if dimensions==1
         scatter(dat.x(:,selector(1)),zeros(size(dat.x(:,selector(1)),1),1),MarkerSize,dat.targets,'filled');
-        xlabel(dat.labels{1});
+        xlabel(dat.labels{selector(1)});
         grid on;
     elseif dimensions==2
         scatter(dat.x(:,selector(1)),dat.x(:,selector(2)),MarkerSize,dat.targets,'filled');
