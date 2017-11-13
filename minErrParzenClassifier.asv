@@ -12,12 +12,11 @@ for i = 1:n
     % Acumulator value for finding the optimal value of g
     curDist = -inf;
     for j = 1:params.nClasses
-        ni = size(params.traindata{j},1);
         TestPoint = data.x(i,:);
-        dist = TestPoint - params.traindata{j};
-        dist = sqrt(sum(abs(dist).^2,2));
-        g1 = sum(normpdf(dist, 0, params.sigma));
-        g2 = log(1/ni * g1);
+        dist = TestPoint * ones() - params.traindata{j};
+        dist = sqrt(sum(dist.^2,2));
+        g1 = sum(1/size(params.traindata{j},1) * normpdf(dist, 0, params.sigma));
+        g2 = log(g1);
         g3 = log(params.prior(j,1));
         
         g = g2 + g3;
